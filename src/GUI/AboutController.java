@@ -65,7 +65,7 @@ public class AboutController implements Initializable {
                 throw new IllegalArgumentException("A tarefa não pode ser vazia.");
             }
             for (Lembrete individual: lembreteList) {
-                if (individual.getName().matches(lembrete.getName())){
+                if (individual.getName().matches(lembrete.getName()) && Objects.equals(individual.getDate(), Date.from(instant))){
                     throw new IllegalArgumentException("Essa tarefa já está listada.");
                 }
             }
@@ -78,6 +78,7 @@ public class AboutController implements Initializable {
 //                addBox(lembrete);
 //            }
 
+            Alerts.showAlert(null, "Sucesso!","Item adicionado à lista", Alert.AlertType.INFORMATION );
 
 
         }catch (IllegalArgumentException e){
