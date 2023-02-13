@@ -78,6 +78,29 @@ public class LembreteDaoJDBC implements LembreteDao {
         }
     }
 
+    public void updateDateStatus(Lembrete obj) {
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement("UPDATE Lembrete " +
+                    "SET status = ?, date = ? " +
+                    "WHERE Id = ?", Statement.RETURN_GENERATED_KEYS);
+
+            st.setBoolean(1, obj.getStatus());
+            st.setDate(2, new java.sql.Date(obj.getDate().getTime()));
+
+            st.setInt(3, obj.getId());
+
+            st.executeUpdate();
+
+
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+
+        }
+    }
+
     @Override
     public void changeStatus(Lembrete obj) {
         PreparedStatement st = null;
@@ -174,6 +197,38 @@ public class LembreteDaoJDBC implements LembreteDao {
             DB.closeResultSet(rs);
         }
     }
+
+    @Override
+    public Lembrete findByNameAndDate(String name, Date date) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.prepareStatement(
+                    "SELECT * from Lembrete " +
+                            "WHERE Name = ? AND date = ?"
+            );
+
+            st.setString(1, name);
+            st.setDate(2, new java.sql.Date(date.getTime()));
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                Lembrete obj = instanciateLembrete(rs);
+
+                return obj;
+            }
+            return null;
+
+        }catch (SQLException e){
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
+    }
+
+
 
     @Override
     public List<Lembrete> findAll() {
