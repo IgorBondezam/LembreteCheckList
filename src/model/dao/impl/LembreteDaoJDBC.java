@@ -60,12 +60,13 @@ public class LembreteDaoJDBC implements LembreteDao {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement("UPDATE Lembrete " +
-                    "SET Name = ? " +
+                    "SET Name = ?, date = ?, status = ? " +
                     "WHERE Id = ?", Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, obj.getName());
-
-            st.setInt(2, obj.getId());
+            st.setDate(2, new java.sql.Date(obj.getDate().getTime()));
+            st.setBoolean(3, false);
+            st.setInt(4, obj.getId());
 
             st.executeUpdate();
 

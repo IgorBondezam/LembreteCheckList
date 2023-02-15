@@ -19,12 +19,22 @@ public class LembretesService {
     public void update(Lembrete obj){
         dao.updateDateStatus(obj);
     }
+    public void updateAll(Lembrete obj){
+        dao.update(obj);
+    }
     public List<Lembrete> findAll(){
         return dao.findAll();
     }
 
     public List<Lembrete> findByDate(Date date){
         return dao.findByDate(date);
+    }
+
+    public Lembrete findById(Integer id){
+        return dao.findById(id);
+    }
+    public void deleteById(Integer id){
+        dao.deleteById(id);
     }
 
     public Lembrete findByNameAndDate(String name, Date date){

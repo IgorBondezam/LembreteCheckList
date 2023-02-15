@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.StringConverter;
@@ -16,7 +17,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Utils {
-    public static Stage currentStage(ActionEvent event){
+    public static Stage currentStage(MouseEvent event){
         return (Stage) ((Node) event.getSource()).getScene().getWindow();
     }
 
