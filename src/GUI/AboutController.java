@@ -188,28 +188,28 @@ public class AboutController implements Initializable {
                     createDialogForm(service.findById(idForEachCheck), "/GUI/EditFrame.fxml", Utils.currentStage(mouseEvent));
                 }
             });
+
             lbEditar.setDisable(false);
 
-            //Adicionando evento ao label editar e relacionando eles com o item respectivo no bd
-            lbDeletar.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    //--------------------Paga o id -----------------------------------------------------------------
-                    Label lb = listLbDeletar.stream().filter(x -> x.equals(lbDeletar)).findAny().orElse(null);
-                    int valueIndex = listLbDeletar.indexOf(lb);
-                    Integer idForEachCheck = lembreteList.get(valueIndex).getId();
-
-                    Optional<ButtonType> result = Alerts.showConfirmation("Deletar tarefa", "Você deseja " +
-                            "deletar essa tarefa da sua lista? \n");
-                    if (result.get() == ButtonType.OK) {
-                        service.deleteById(idForEachCheck);
-                        showedUpCheckBox(new Date());
-                    }
-                }
-            });
-
-            lbDeletar.setDisable(false);
         }
+        //Adicionando evento ao label editar e relacionando eles com o item respectivo no bd
+        lbDeletar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                //--------------------Paga o id -----------------------------------------------------------------
+                Label lb = listLbDeletar.stream().filter(x -> x.equals(lbDeletar)).findAny().orElse(null);
+                int valueIndex = listLbDeletar.indexOf(lb);
+                Integer idForEachCheck = lembreteList.get(valueIndex).getId();
+
+                Optional<ButtonType> result = Alerts.showConfirmation("Deletar tarefa", "Você deseja " +
+                        "deletar essa tarefa da sua lista? \n");
+                if (result.get() == ButtonType.OK) {
+                    service.deleteById(idForEachCheck);
+                    showedUpCheckBox(Date.from(dpDay.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                }
+            }
+        });
+        lbDeletar.setDisable(false);
 
 
         vBoxEditar.getChildren().add(lbEditar);

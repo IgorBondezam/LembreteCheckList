@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Lembrete_jar</output-path>
     <root id="archive" name="Lembrete.jar">
       <element id="module-output" name="Lembrete" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java-libs/jdbc-connectors/mysql-connector-j-8.0.32.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java-libs/javafx-sdk-17/lib/javafx-swt.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java-libs/javafx-sdk-17/lib/javafx.web.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java-libs/javafx-sdk-17/lib/javafx.base.jar" path-in-jar="/" />
@@ -12,7 +13,6 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java-libs/javafx-sdk-17/lib/javafx.controls.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java-libs/javafx-sdk-17/lib/javafx.graphics.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java-libs/javafx-sdk-17/lib/mysql-connector-j-8.0.32.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../java-libs/jdbc-connectors/mysql-connector-j-8.0.32.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
