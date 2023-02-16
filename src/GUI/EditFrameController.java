@@ -33,6 +33,11 @@ public class EditFrameController implements Initializable {
     public void setEntity(Lembrete entity) {
         this.entity = entity;
     }
+
+    public Lembrete getEntity() {
+        return entity;
+    }
+
     public void setService(LembretesService service){
         this.service = service;
     }
@@ -75,6 +80,7 @@ public class EditFrameController implements Initializable {
 
         ValidationException exception = new ValidationException("Validation error");
 
+        obj.setId(entity.getId());
 
         if (txtName.getText() == null || txtName.getText().trim().equals("")) {
             throw new ValidationException("Campo nome não pode estar vazio");
@@ -111,8 +117,8 @@ public class EditFrameController implements Initializable {
         try {
             entity = getFormData();
             service.updateAll(entity);
-            Alerts.showAlert("Object Saved", null, "Success to save a new Seller", Alert.AlertType.INFORMATION);
-
+            Alerts.showAlert("Tarefa Atualizada", null, "Tarefa Atualizada com sucesso!!", Alert.AlertType.INFORMATION);
+            Utils.currentStage(event).close();
         } catch (DbException e) {
             Alerts.showAlert("Error Saving object", null, e.getMessage(), Alert.AlertType.ERROR);
         } catch (ValidationException e) {
@@ -120,5 +126,10 @@ public class EditFrameController implements Initializable {
         }
 
 
+    }
+
+    @FXML
+    private void onBtCancelAction(ActionEvent event) {
+        Utils.currentStage(event).close();
     }
 }

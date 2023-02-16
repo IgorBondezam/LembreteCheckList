@@ -20,7 +20,7 @@ public class LembretesService {
         dao.updateDateStatus(obj);
     }
     public void updateAll(Lembrete obj){
-        dao.update(obj);
+        dao.updateAll(obj);
     }
     public List<Lembrete> findAll(){
         return dao.findAll();

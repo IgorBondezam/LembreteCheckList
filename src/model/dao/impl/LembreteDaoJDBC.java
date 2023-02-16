@@ -56,7 +56,7 @@ public class LembreteDaoJDBC implements LembreteDao {
     }
 
     @Override
-    public void update(Lembrete obj) {
+    public void updateAll(Lembrete obj) {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement("UPDATE Lembrete " +

@@ -9,7 +9,7 @@ import java.util.List;
 public interface LembreteDao {
 
     void insert(Lembrete obj);
-    void update(Lembrete obj);
+    void updateAll(Lembrete obj);
     void updateDateStatus(Lembrete obj);
     void changeStatus(Lembrete obj);
     void deleteById(Integer id);

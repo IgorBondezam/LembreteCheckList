@@ -18,6 +18,7 @@ import model.entities.Lembrete;
 import model.service.LembretesService;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -332,10 +333,16 @@ public class AboutController implements Initializable {
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.showAndWait();
 
+            if(obj.getDate() != controller.getEntity().getDate()) {
+                dpDay.setValue(controller.getEntity().getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            }
+            showedUpCheckBox(controller.getEntity().getDate());
 
         }catch (IOException e){
             e.printStackTrace();
             Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
+
+
 
         }
     }
