@@ -5,7 +5,7 @@
 
 Aplicação de To do list, desenvolvido para melhorar meus conhecimentos em Java e organizar as tarefas do meu dia a dia.
 
-Usando os conhecimentos de java, POO, conexões com banco de dados e realizando o View com JavaFX, foi um projeto desafiador, porém o resultado saiu como o esperado
+Usando os conhecimentos de java, POO, conexões com banco de dados e realizando o View com JavaFX, foi um projeto desafiador, porém o resultado saiu como o esperado.
 
 
 ## Layout Application
